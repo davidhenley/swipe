@@ -1,13 +1,25 @@
 import React, { Component } from 'react';
 import {
   StyleSheet,
-  View
+  View,
+  Animated
 } from 'react-native';
 
 class Ball extends Component {
+  componentWillMount() {
+    this.ballPosition = new Animated.ValueXY(0, 0);
+    Animated.sequence([
+      Animated.spring(this.ballPosition, {
+        toValue: { x: 200, y: 500 }
+      })
+    ]).start();
+  }
+
   render() {
     return (
-      <View style={styles.ball} />
+      <Animated.View style={this.ballPosition.getLayout()}>
+        <View style={styles.ball} />
+      </Animated.View>
     );
   }
 }

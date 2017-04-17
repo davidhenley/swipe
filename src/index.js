@@ -2,27 +2,44 @@ import React, { Component } from 'react';
 import {
   StyleSheet,
   View,
-  Text,
-  Animated
+  Text
 } from 'react-native';
-import Ball from './Ball';
+import {
+  Card,
+  Button,
+  Icon
+} from 'react-native-elements';
+
+import Deck from './Deck';
+import DATA from './data';
 
 class App extends Component {
-  componentWillMount() {
-    this.ballPosition = new Animated.ValueXY(0, 0);
-    Animated.spring(this.ballPosition, {
-      toValue: { x: 200, y: 500 }
-    }).start();
+  renderCard(item) {
+    return (
+      <Card
+        image={{ uri: item.uri }}
+        key={item.id}
+      >
+        <Text style={styles.cardHeader}>{item.text}</Text>
+        <Text style={styles.cardText}>
+          I can customize this Card further
+        </Text>
+      <Button
+        icon={{ name: 'code' }}
+        backgroundColor='#03A9F4'
+        buttonStyle={{ marginLeft: 0, marginRight: 0 }}
+        title='View Now' />
+      </Card>
+    );
   }
 
   render() {
     return (
       <View style={styles.container}>
-
-        <Animated.View style={this.ballPosition.getLayout()}>
-          <Ball />
-        </Animated.View>
-
+        <Deck
+          data={DATA}
+          renderCard={this.renderCard}
+        />
       </View>
     );
   }
@@ -31,6 +48,15 @@ class App extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1
+  },
+  cardText: {
+    marginBottom: 10
+  },
+  cardHeader: {
+    fontWeight: 'bold',
+    fontSize: 17,
+    color: '#666',
+    marginBottom: 10
   }
 });
 
