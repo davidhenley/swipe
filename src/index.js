@@ -11,7 +11,7 @@ import {
 } from 'react-native-elements';
 
 import Deck from './Deck';
-import DATA from './data';
+import DATA from '../assets/data';
 
 class App extends Component {
   renderCard(item) {
