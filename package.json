@@ -7,9 +7,9 @@
   "main": "main.js",
   "dependencies": {
     "expo": "^15.0.2",
-    "react": "15.4.0",
+    "prop-types": "^15.5.8",
+    "react": "~15.4.1",
     "react-native": "https://github.com/exponent/react-native/archive/sdk-15.0.0.tar.gz",
-    "react-native-elements": "^0.11.1",
-    "react-native-vector-icons": "^4.0.1"
+    "react-native-elements": "^0.11.1"
   }
 }
